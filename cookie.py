@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from time import time
 
 URL = "http://orteil.dashnet.org/experiments/cookie/"
-chrome_driver_path = "F:/replit/day-48/chromedriver_win32/chromedriver.exe"
+chrome_driver_path = "chrome_driver_path in you PC"
 driver = webdriver.Chrome(executable_path=chrome_driver_path)
 driver.get(URL)
 each_element = []
@@ -12,8 +12,6 @@ turn = True
 max_turn = True
 count = 0
 cost_id = {}
-# item_ids =[]
-
 
 class Upgrade:
     def game(self):
@@ -35,18 +33,10 @@ class Upgrade:
         del each_element[:]
         del item_ids[:]
 
-    # def __init__(self, new_value):
-    #     self.new_value = new_value
-
     def purchase(self, new_value):
         require_again = driver.find_element_by_id(cost_id[new_value])
         require_again.click()
         cost_id.clear()
-        # for element_again in require_again:
-        #     if element_again.text != "":
-        #         each_element_again.append(element_again.text.split(" - ")[0])
-        # print(type(each_element_again))
-
 
 upgrade = Upgrade()
 
@@ -60,13 +50,11 @@ while turn:
 
     while time() <= time_out:
         cookie.click()
-
-    # max_num = max(each_element)
-    # print(max_num)
+        
     while max_turn:
         max_num = max(cost_id)
         point = (points.text).replace(",", "")
-        # asd = point.replace(",", "")
+        
         if max_num <= int(point):
             print(point)
             max_turn = False
@@ -79,8 +67,4 @@ while turn:
 
     if count == 60:
         turn = False
-    # del each_element[:]
-    # del item_ids[:]
-# print(points.text)
-
 
